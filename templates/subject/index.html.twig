@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for label, messages in app.flashes('alert alert-success') %}
+        {% for message in messages %}
+            <div class="flash-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+<h2>List of all objects</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Id</td>     
+            <td>Category</td>
+            <td>Title</td>
+            <td>Texte</td>
+            <td>Action</td>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for subject in subjects %}
+            <tr>
+                <td>{{ subject.id }}</td>
+                <td>{{ subject.category }}</td>
+                <td>
+                    <a href = "{{ path('subject.show', { id:subject.id}) }}" >{{ subject.title }}</a>
+                </td>
+                <td>{{ subject.text }}</td>
+                <td>
+                    <a class="text-danger" href = "{{ path('subject.delete', {id:subject.id}) }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </tbody>
+{% endblock %}

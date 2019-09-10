@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<em> {{subject.category.id}} </em>
+<em> {{subject.category.name}} </em>
+
+<h1> {{subject.title}}</h1>
+<p> {{subject.text}} </p>
+<p> {{subject.theme}} </p>
+<img src= "{{ '/uploads/' ~ subject.image}}" alt="">
+
+
+{% endblock %}
